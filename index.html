@@ -27,11 +27,9 @@
                 let blue = 255 - red;
                 html += `
                     <div style="background-color: rgb(${red},${green},${blue})">
-                        <!--
-                        r${rowIndex}<br/>
-                        c${columnIndex}<br/>
-                        i${index}<br/>
-                        -->
+                        rad ${rowIndex}<br/>
+                        col ${columnIndex}<br/>
+                        index ${index}<br/>
                     </div>`;
             }
             appDiv.innerHTML = html;
