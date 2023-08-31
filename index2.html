@@ -12,8 +12,12 @@
     <script>
         let appDiv = document.getElementById('app');
 
-        showGrid(12, 12);
-        function showGrid(columnCount, rowCount) {
+        let colorOffset = 1;
+
+        showGrid();
+        function showGrid() {
+            let columnCount = 12;
+            let rowCount = 12;
             appDiv.style.display = 'grid';
             appDiv.style.gridTemplateColumns = `repeat(${columnCount}, 70px)`;
             appDiv.style.gridTemplateRows = `repeat(${rowCount}, 70px)`;
@@ -22,8 +26,8 @@
             for (let index = 0; index < size; index++) {
                 let rowIndex = Math.floor(index / columnCount);
                 let columnIndex = index % columnCount;
-                let red = 21 * rowIndex;
-                let green = 21 * columnIndex;
+                let red = (21 * rowIndex + colorOffset) % 255;
+                let green = (21 * columnIndex + colorOffset) % 255;
                 let blue = 255 - red;
                 html += `
                     <div style="background-color: rgb(${red},${green},${blue})">
@@ -35,8 +39,10 @@
                     </div>`;
             }
             appDiv.innerHTML = html;
+            colorOffset += 3;
+            requestAnimationFrame(showGrid);
         }
-        
+
         function count(startValue, endValue, changeValue) {
             for (let number = startValue; number < endValue; number += changeValue) {
                 console.log(number);

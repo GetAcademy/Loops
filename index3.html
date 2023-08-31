@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let text = 'Terje Kolderup';
+        let result = '';
+        for (let index = 0; index < text.length; index++) {
+            let letter = text.charAt(index);
+            let useUpper = index % 2 == 2;
+            if (useUpper) {
+                result += letter.toUpperCase();
+            } else {
+                result += letter.toLowerCase();
+            }
+            // if(useUpper)useUpper = false;
+            // else useUpper = true;
+            useUpper = !useUpper;
+        }
+        console.log(result);
+
+        // let text = 'Terje Kolderup';
+        // let result = '';
+        // let useUpper = true;
+        // for (let index = 0; index < text.length; index++) {
+        //     let letter = text.charAt(index);
+        //     if (useUpper) {
+        //         result += letter.toUpperCase();
+        //     } else {
+        //         result += letter.toLowerCase();
+        //     }
+        //     // if(useUpper)useUpper = false;
+        //     // else useUpper = true;
+        //     useUpper = !useUpper;
+        // }
+        // console.log(result);
+
+
+        function countLetter(text, letterToCount) {
+            let letterCount = 0;
+            for (let index = 0; index < text.length; index++) {
+                let letter = text.charAt(index);
+                if (letter == letterToCount) {
+                    letterCount++;
+                }
+            }
+            return letterCount;
+        }
+
+        // let text = 'Det var en gang.';
+        // let letterCount = 0;
+        // for (let index = 0; index < text.length; index++) {
+        //     let letter = text.charAt(index);
+        //     if (letter == 'a') {
+        //         letterCount++;
+        //     }
+        // }
+        // console.log(letterCount);
+
+
+        // 01234
+        // Terje => ejreT
+        function reverseText(text) {
+            let reversedText = '';
+            for (let index = 0; index < text.length; index++) {
+                let letter = text.charAt(index);
+                reversedText = letter + reversedText;
+            }
+            return reversedText;
+        }
+
+        function reverseText2(text) {
+            let reversedText = '';
+            for (let index = text.length - 1; index >= 0; index--) {
+                let letter = text.charAt(index);
+                reversedText += letter;
+            }
+            return reversedText;
+        }
+    </script>
+</body>
+
+</html>
