@@ -5,24 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #app>div {
+            border: 1px solid gray;
+        }
+    </style>
 </head>
 
 <body>
+    <h1>Pause til 13:33</h1>
     <div id="app"></div>
     <script>
-        // model
+        let appDiv = document.getElementById('app');
 
-        // view
-        updateView();
-        function updateView() {
-            document.getElementById('app').innerHTML = /*HTML*/`
-
-            `;
-            
+        showGrid(12, 12);
+        function showGrid(columnCount, rowCount) {
+            appDiv.style.display = 'grid';
+            appDiv.style.gridTemplateColumns = `repeat(${columnCount}, 70px)`;
+            appDiv.style.gridTemplateRows = `repeat(${rowCount}, 70px)`;
+            let size = columnCount * rowCount;
+            let html = '';
+            for (let index = 0; index < size; index++) {
+                let rowIndex = Math.floor(index / columnCount);
+                let columnIndex = index % columnCount;
+                let red = 21 * rowIndex;
+                let green = 21 * columnIndex;
+                let blue = 255 - red;
+                html += `
+                    <div style="background-color: rgb(${red},${green},${blue})">
+                        r${rowIndex}<br/>
+                        c${columnIndex}<br/>
+                        i${index}<br/>
+                    </div>`;
+            }
+            appDiv.innerHTML = html;
         }
 
-        // controller
 
+
+        function count(startValue, endValue, changeValue) {
+            for (let number = startValue; number < endValue; number += changeValue) {
+                console.log(number);
+            }
+        }
+
+        // eksempel på å gjenta til oppnådd ønsket resultat
+        // let number = 1;
+        // let sum = 0;
+        // while (sum < 1000) {
+        //     sum += number;
+        //     number++;
+        // }
+        // console.log(number);
+        // console.log(sum);
     </script>
 </body>
 
